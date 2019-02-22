@@ -1,7 +1,8 @@
 .project
 *.pyc
-tests/*.pyc
-tests/.DS_Store
+test/*.pyc
+test/.DS_Store
+test/emails/private/
 .pydevproject
 .DS_Store
 *.egg-info

@@ -36,7 +36,9 @@ class EmailMessage(object):
     """ An email message represents a parsed email body.
     """
 
-    SIG_REGEX = re.compile(r"(--|__|-\w)|(^Sent from my (\w+\s*){1,3})")
+    SIG_REGEX = re.compile(
+        r"(--|__|-\w)|(^Sent from my (\w+\s*){1,3})|(^Envoyé de mon (\w+\s*){1,3})"
+    )
     QUOTE_HDR_REGEX = re.compile("On.*wrote:$")
     QUOTED_REGEX = re.compile(r"(>+)")
     HEADER_REGEX = re.compile(
