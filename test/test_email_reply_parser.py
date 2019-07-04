@@ -8,7 +8,7 @@ from email.message import EmailMessage
 from email.policy import default
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from email_reply_parser import EmailReplyParser
+from email_reply_parser import EmailReplyParser, EmailMessage as ParserEmailMessage
 
 
 class EmailMessageTest(unittest.TestCase):
@@ -189,6 +189,18 @@ class EmailMessageTest(unittest.TestCase):
     def test_private_email_1(self):
         message = self.get_private_email("1.msg")
         self.assertEqual(6, len(message.reply.splitlines()))
+
+    def test_private_email_2(self):
+        message = self.get_private_email("2.msg")
+        # print(message.reply)
+        self.assertEqual(9, len(message.reply.splitlines()))
+
+    def test_french_quote_start(self):
+        line = (
+            "Le 20 févr. 2019 à 22:10, Louis de Funès via Truc "
+            "<noreply@truc.fr<mailto:noreply@truc.fr>> a écrit :"
+        )
+        self.assertTrue(ParserEmailMessage.QUOTE_HDR_REGEX.match(line))
 
     def get_email(self, name):
         """ Return EmailMessage instance

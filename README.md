@@ -61,5 +61,3 @@ Step 2: Provide email message as type string using parse_reply class method.
 ```python
 EmailReplyParser.parse_reply(email_message)
 ```
-
-

@@ -39,7 +39,7 @@ class EmailMessage(object):
     SIG_REGEX = re.compile(
         r"(--|__|-\w)|(^Sent from my (\w+\s*){1,3})|(^Envoyé de mon (\w+\s*){1,3})"
     )
-    QUOTE_HDR_REGEX = re.compile("On.*wrote:$")
+    QUOTE_HDR_REGEX = re.compile("(On.*wrote:$)|(Le.*à.* a écrit :)")
     QUOTED_REGEX = re.compile(r"(>+)")
     HEADER_REGEX = re.compile(
         r"^\*?(From|Sent|To|Subject|De |Envoyé |À |Objet ):\*? .+"
